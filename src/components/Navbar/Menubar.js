@@ -1,10 +1,12 @@
+import { NavLink } from "react-router-dom";
+
 const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Appointments", href: "#", current: false },
-  { name: "Doctors", href: "#", current: false },
-  { name: "Deparments", href: "#", current: false },
-  { name: "Patients", href: "#", current: false },
-  { name: "Payments", href: "#", current: false },
+  { name: "Dashboard", path: "/", current: true },
+  { name: "Appointments", path: "/appointments", current: false },
+  { name: "Doctors", path: "/doctors", current: false },
+  { name: "Deparments", path: "/deparments", current: false },
+  { name: "Patients", path: "/patients", current: false },
+  { name: "Payments", path: "/payments", current: false },
 ];
 
 function classNames(...classes) {
@@ -16,9 +18,10 @@ const Menubar = () => {
     <nav className="md:block hidden mt-5">
       <div className="flex justify-start items-baseline space-x-8">
         {navigation.map((item) => (
-          <a key={item.name} href={item.path} className={classNames(item.current ? "text-[#336CFB]" : "text-white hover:text-[#336CFB]", "text-sm font-bold cursor-pointer")} aria-current={item.current ? "page" : undefined}>
+          <NavLink key={item.name} to={item.path} className={classNames(item.current ? "text-[#336CFB]" : "text-white hover:text-[#336CFB]", "text-sm font-bold cursor-pointer")} aria-current={item.current ? "page" : undefined}>
+            {" "}
             {item.name}
-          </a>
+          </NavLink>
         ))}
       </div>
     </nav>

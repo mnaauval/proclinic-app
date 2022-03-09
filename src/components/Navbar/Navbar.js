@@ -15,14 +15,15 @@ import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Badge } from "@mui/material";
 import { motion } from "framer-motion";
+import { NavLink } from "react-router-dom";
 
 const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Appointments", href: "#", current: false },
-  { name: "Doctors", href: "#", current: false },
-  { name: "Deparments", href: "#", current: false },
-  { name: "Patients", href: "#", current: false },
-  { name: "Payments", href: "#", current: false },
+  { name: "Dashboard", path: "/", current: true },
+  { name: "Appointments", path: "/appointments", current: false },
+  { name: "Doctors", path: "/doctors", current: false },
+  { name: "Deparments", path: "/deparments", current: false },
+  { name: "Patients", path: "/patients", current: false },
+  { name: "Payments", path: "/payments", current: false },
 ];
 
 function classNames(...classes) {
@@ -40,7 +41,7 @@ const Navbar = () => {
       {({ open }) => (
         <>
           <div className="bg-[#1F2022]">
-            <div className="lg:w-1/2 w-full my-0 mx-auto text-center py-2.5 xl:px-0 px-5">
+            <div className="lg:w-3/4 w-full my-0 mx-auto text-center py-2.5 xl:px-0 px-5">
               <div className="flex justify-between items-center">
                 {/* Trigger Menu */}
                 <div className="md:hidden block rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -85,7 +86,7 @@ const Navbar = () => {
                     </svg>
                   </div>
                   <div className="md:flex hidden items-center rounded-full p-1.5 text-[#555] bg-white lg:mx-5 mx-0">
-                    <input type="search" className="text-[#1F2022] bg-transparent m-0 px-2.5 placeholder:text-[#8F8F90] outline-none" placeholder="Search" />
+                    <input type="search" className="text-[#1F2022] bg-transparent m-0 px-2.5 placeholder:text-[#8F8F90] outline-none border-none ring-transparent focus:outline-none focus:border-none focus:ring-transparent py-0" placeholder="Search" />
                     <SearchIcon className="cursor-pointer mx-1.5" />
                   </div>
                 </div>
@@ -257,7 +258,7 @@ const Navbar = () => {
               </div>
               <div className="px-10 py-10 space-y-1">
                 {navigation.map((item) => (
-                  <Disclosure.Button key={item.name} as="a" href={item.href} className={classNames(item.current ? "text-[#336CFB]" : "text-white hover:text-[#336CFB]", "block py-2.5 rounded-md text-sm font-bold ")} aria-current={item.current ? "page" : undefined}>
+                  <Disclosure.Button as={NavLink} key={item.name} to={item.path} className={classNames(item.current ? "text-[#336CFB]" : "text-white hover:text-[#336CFB]", "block py-2.5 rounded-md text-sm font-bold ")} aria-current={item.current ? "page" : undefined}>
                     {item.name}
                   </Disclosure.Button>
                 ))}
